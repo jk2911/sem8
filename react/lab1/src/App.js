@@ -33,6 +33,8 @@ const obj = [
   },
 ];
 
+const size = "66px"
+
 function record(currency) {
   var color = "green";
   if (currency.change < 0) color = "red";
@@ -47,10 +49,78 @@ function record(currency) {
   );
 }
 
-function chess(){
-  return(
+function blackCell() {
+  return (
+    <div style={{ height: size, width: size, background: "black" }}></div>
+  )
+}
+function whiteCell() {
+  return (
+    <div style={{ height: size, width: size, background: "white" }}></div>
+  )
+}
+
+function cell(letter) {
+  return (
+    <div style={{ height: size, width: size, background: "white", fontSize:"25px", display:"flex", alignItems: "center", justifyContent: "center" }}>{letter}</div>
+  )
+}
+
+function rowA() {
+  return (
+    <div style={{ display: "flex" }}>
+      {cell("")}
+      {cell("a")}
+      {cell("b")}
+      {cell("c")}
+      {cell("d")}
+      {cell("e")}
+      {cell("f")}
+      {cell("g")}
+      {cell("h")}
+    </div>
+  )
+}
+
+function row(num) {
+  var style = {
+    display: "flex"
+  }
+  var first;
+  var second;
+  if (num % 2 != 0) {
+    first = blackCell();
+    second = whiteCell();
+  }
+  else {
+    first = whiteCell();
+    second = blackCell();
+  }
+
+  var board = <div></div>;
+  return (
+    <div style={style}>
+      {cell(num)}
+      {first}
+      {second}
+      {first}
+      {second}
+      {first}
+      {second}
+      {first}
+      {second}
+      {cell(num)}
+    </div>
+  )
+}
+
+function chess() {
+  var numbers = ["1", "2", "3", "4", "5", "6", "7", "8"];
+  return (
     <div>
-      <span style={{background:"black", height:"50px", width:"50px"}}>df</span>
+      {rowA()}
+      {numbers.map(v => row(v))}
+      {rowA()}
     </div>
   )
 }
