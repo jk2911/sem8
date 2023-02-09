@@ -128,7 +128,8 @@ function chess() {
 function App() {
   return (
     <>
-      <h1>{new Date().toLocaleDateString()}</h1>
+    <h1>Hello World</h1>
+      <h2>{new Date().toLocaleDateString()}</h2>
       <table>
         <tr>
           <th>Наименование</th>
